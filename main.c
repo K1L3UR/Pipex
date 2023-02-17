@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 19:39:26 by rkhelif           #+#    #+#             */
-/*   Updated: 2022/09/13 17:27:20 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/01/19 16:56:34 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	pid_t	pid;
 	int		count;
 	int		i;
-	
+
 	i = 0;
 	count = 3;
 	fd_in = dup(STDIN_FILENO);  // sauvegarde du stin dans fd_in.

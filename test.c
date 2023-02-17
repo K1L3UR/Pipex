@@ -3,15 +3,13 @@
 #include <stdio.h>
 #include <sys/wait.h>
 
-
-int main (int ac, char **av, char **envp)
+int	main(int argc, char *argv[])
 {
-    int pid;
-    
-    pid = fork();
-    if (pid == 0)
-        execve("/bin/ls", av, envp);
-     wait(NULL);
-    printf("bonjour, pid = %d\n", pid);
-    return (0);
+	char cmd[] = "/usr/bin/ls";
+	char *argvec[] = {"ls", "-l", NULL};
+	char *envvec[] = {NULL};
+	
+	printf("%s\n", cmd);
+	execve(cmd, argvec, envvec);
+	return (0);
 }
