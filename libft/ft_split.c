@@ -40,7 +40,7 @@ static size_t	ft_count_word(char const *s, char c)
 	return (word + 1);
 }
 
-static char		*ft_get_next_word(char const *s, char c, size_t *j)
+static char	*ft_get_next_word(char const *s, char c, size_t *j)
 {
 	char	*word;
 	size_t	jcopy;
@@ -52,7 +52,8 @@ static char		*ft_get_next_word(char const *s, char c, size_t *j)
 	jcopy = *j;
 	while (s[jcopy] && s[jcopy] != c)
 		jcopy++;
-	if (!(word = (char *)malloc(sizeof(char) * (jcopy - *j + 1))))
+	word = (char *)malloc(sizeof(char) * (jcopy - *j + 1));
+	if (!word)
 		return (NULL);
 	while (*j < jcopy)
 	{
@@ -64,7 +65,7 @@ static char		*ft_get_next_word(char const *s, char c, size_t *j)
 	return (word);
 }
 
-static void		ft_freetab(char **tab, int i)
+static void	ft_freetab(char **tab, int i)
 {
 	while (i >= 0)
 	{
@@ -74,7 +75,7 @@ static void		ft_freetab(char **tab, int i)
 	free(tab);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**tab;
 	size_t	i;
@@ -86,17 +87,29 @@ char			**ft_split(char const *s, char c)
 	if (!(s))
 		return (NULL);
 	word = ft_count_word(s, c);
-	if (!(tab = (char **)malloc(sizeof(char *) * (word + 1))))
+	tab = (char **)malloc(sizeof(char *) * (word + 1));
+	if (!tab)
 		return (NULL);
 	while (i < word)
 	{
-		if (!(tab[i] = ft_get_next_word(s, c, &j)))
-		{
-			ft_freetab(tab, i);
-			return (NULL);
-		}
+		tab[i] = ft_get_next_word(s, c, &j);
 		i++;
 	}
 	tab[word] = NULL;
 	return (tab);
 }
+
+/*
+if (!(word = (char *)malloc(sizeof(char) * (jcopy - *j + 1))))
+		return (NULL);
+		ligne 55
+		if (!(tab = (char **)malloc(sizeof(char *) * (word + 1))))
+		return (NULL);
+		ligne 90
+		if (!tab[i] = ft_get_next_word(s, c, &j))
+		{
+			ft_freetab(tab, i);
+			return (NULL);
+		}
+		ligne 95
+*/

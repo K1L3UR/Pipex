@@ -12,9 +12,9 @@
 
 int	ft_atoi(char *str)
 {
-	int negatif;
-	int i;
-	int nb;
+	int	negatif;
+	int	i;
+	int	nb;
 
 	negatif = 0;
 	i = 0;
@@ -22,7 +22,7 @@ int	ft_atoi(char *str)
 	if (str[i] == '\0')
 		return (0);
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\v' || str[i] == '\n'
-			|| str[i] == '\r' || str[i] == '\f')
+		|| str[i] == '\r' || str[i] == '\f')
 		i++;
 	if (str[i] == '-')
 		negatif = 1;
@@ -34,5 +34,12 @@ int	ft_atoi(char *str)
 		nb = nb + str[i] - '0';
 		i++;
 	}
-	return (negatif ? -nb : nb);
+	if (negatif == 1)
+		return (nb * -1);
+	else
+		return (nb);
 }
+
+/* 
+return (negatif ? -nb : nb); 
+*/

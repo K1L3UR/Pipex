@@ -28,7 +28,7 @@ static int	isinset(char const *set, char c)
 	return (0);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
 	size_t	j;
@@ -44,7 +44,8 @@ char		*ft_strtrim(char const *s1, char const *set)
 		i++;
 	while (j - 1 >= i && isinset(set, s1[j - 1]))
 		j--;
-	if (!(result = (char *)malloc((sizeof(char) * (j - i + 1)))))
+	result = (char *)malloc(sizeof(char) * (j - i + 1));
+	if (!result)
 		return (NULL);
 	while (s1[i] && i < j)
 	{
