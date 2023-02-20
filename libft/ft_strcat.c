@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arnduran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/20 19:12:04 by arnduran          #+#    #+#             */
-/*   Updated: 2022/09/13 18:02:22 by arnduran         ###   ########.fr       */
+/*   Created: 2020/01/14 18:30:29 by arnduran          #+#    #+#             */
+/*   Updated: 2020/01/14 18:31:54 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  PIPEX_H
-# define PIPEX_H
-# include <string.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-# include <fcntl.h>
+#include "libft.h"
 
-# endif
+char	*ft_strcat(char *dest, const char *src)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	i = ft_strlen(dest);
+	j = 0;
+	while (src[j] != '\0')
+	{
+		dest[i + j] = src[j];
+		j++;
+	}
+	dest[i + j] = '\0';
+	return (dest);
+}

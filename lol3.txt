@@ -1,0 +1,15 @@
+a.out$
+ASOURSOU.sh$
+cat -elol2.txt$
+libft$
+lol2.txt$
+lol3.txt$
+lol.txt$
+main.c$
+New_main.c$
+pipex$
+pipex.c$
+pipex.h$
+p.txt$
+test.c$
+test.txt$

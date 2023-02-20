@@ -35,7 +35,9 @@ SRC =	ft_memset.c \
 		ft_putchar_fd.c \
 		ft_strchr.c \
 		ft_strlcat.c \
-		ft_strrchr.c
+		ft_strrchr.c \
+		ft_strcat.c \
+		ft_strjoin3.c
 
 OBJS = $(SRC:.c=.o)
 

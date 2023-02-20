@@ -1,0 +1,13 @@
+a.out
+ASOURSOU.sh
+libft
+lol2.txt
+lol.txt
+main.c
+New_main.c
+pipex
+pipex.c
+pipex.h
+p.txt
+test.c
+test.txt
