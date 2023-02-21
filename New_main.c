@@ -63,6 +63,8 @@ char	**extract_path(char **env)
 	int	i;
 
 	i = 0;
+	if (!*env)
+		return(ft_split("", '{'));
 	while (env[i] && ft_strncmp("PATH=", env[i], 5))
 		i++;
 	return (ft_split(env[i] + 5, ':' ));
@@ -92,9 +94,7 @@ void	exec_commands(char **env, char **tab, char *argv)
 	char	*s;
 
 	i = 0;
-	//printf("argv = %s\n", argv);
 	avtab = ft_split(argv, ' ');
-	//print_tab(avtab);
 	if (!(avtab))
 		perror("ft_split");
 	s = find_binaries(tab, *avtab);
@@ -124,7 +124,7 @@ int	exec(char **env, char **argv, int argc, char **tab)
 				fd_in = open(argv[1], O_RDONLY);
 				if (fd_in == -1)
 				{
-					perror("ouveture fichier");
+					perror("Error file opening");
 					exit(0);
 				}
 				dup2(fd_in, STDIN_FILENO);
@@ -163,7 +163,7 @@ int	main(int argc, char *argv[], char **env)
 
 	i = 0;
 	if (argc < 5)
-		exit((printf("arg < 5"), 0));
+		exit((ft_putstr_fd("arg < 5", 1), 0));
 	tab = extract_path(env);
 	if (!(tab))
 		return (0);
