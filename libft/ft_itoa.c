@@ -30,7 +30,7 @@ static size_t	size_int(int n)
 	return (i);
 }
 
-static char		*write_n(char *str, int n, size_t i)
+static char	*write_n(char *str, int n, size_t i)
 {
 	while (n > 9)
 	{
@@ -42,7 +42,7 @@ static char		*write_n(char *str, int n, size_t i)
 	return (str);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*str;
 	size_t	j;
@@ -53,7 +53,8 @@ char			*ft_itoa(int n)
 		return (str);
 	}
 	j = size_int(n);
-	if (!(str = (char *)malloc(sizeof(char) * (j + 2))))
+	str = (char *)malloc(sizeof(char) * (j + 2));
+	if (!str)
 		return (NULL);
 	if (n < 0)
 	{

@@ -1,6 +1,6 @@
 NAME = pipex
 
-FLAGS = -Wall -Wextra -Werror
+#FLAGS = -Wall -Wextra -Werror
 
 CC = clang
 
@@ -12,7 +12,7 @@ OBJS = $(SRC: .c=.o)
 all: $(NAME)
 
 %.o: %.c pipex.h
-	$(CC) -o -c $@ $< $(FLAGS)
+	$(CC) -o -c $@ $< #$(FLAGS)
 
 clean: 
 	rm -rf *.o

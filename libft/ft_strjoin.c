@@ -21,8 +21,8 @@ static char	*ft_cpy(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	if (!(result = (char *)malloc(sizeof(char) *
-		(ft_strlen(s1) + ft_strlen(s2)) + 1)))
+	result = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	if (!result)
 		return (NULL);
 	while (s1[i])
 	{
@@ -39,7 +39,7 @@ static char	*ft_cpy(char const *s1, char const *s2)
 	return (result);
 }
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*result;
 

@@ -65,6 +65,7 @@ static char	*ft_get_next_word(char const *s, char c, size_t *j)
 	return (word);
 }
 
+/*
 static void	ft_freetab(char **tab, int i)
 {
 	while (i >= 0)
@@ -74,6 +75,7 @@ static void	ft_freetab(char **tab, int i)
 	}
 	free(tab);
 }
+*/
 
 char	**ft_split(char const *s, char c)
 {

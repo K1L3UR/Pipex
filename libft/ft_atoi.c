@@ -10,15 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+void	init(int *negatif, int *i, int *nb)
+{
+	*negatif = 0;
+	*i = 0;
+	*nb = 0;
+}	
+
 int	ft_atoi(char *str)
 {
 	int	negatif;
 	int	i;
 	int	nb;
 
-	negatif = 0;
-	i = 0;
-	nb = 0;
+	init(&negatif, &i, &nb);
 	if (str[i] == '\0')
 		return (0);
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\v' || str[i] == '\n'
