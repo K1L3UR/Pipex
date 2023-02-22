@@ -8,7 +8,18 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-//cree un fichier av open then lire et envoyer le fichier
+void	ft_freetab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
 
 void	print_tab(char **tab)
 {
@@ -31,9 +42,9 @@ void	exec_pipe(char *env[])
 	int	nb_pipe;
 
 	nb_pipe = 2;
-	i = 0;
+	i = -1;
 	fd_in = dup(STDIN_FILENO);
-	while (i < nb_pipe)
+	while (++i < nb_pipe)
 	{
 		pipe(pipefd);
 		pid = fork();
@@ -47,13 +58,10 @@ void	exec_pipe(char *env[])
 			close(fd_in);
 			close(pipefd[0]);
 			close(pipefd[1]);
-			//if (i == 0)
-			//	execve(cmd, arvec, envec);
 		}
 		dup2(pipefd[0], fd_in);
 		close(pipefd[0]);
 		close(pipefd[1]);
-		i++;
 	}
 	close(fd_in);
 }
@@ -75,16 +83,23 @@ char	*find_binaries(char **tab, char *bin_name)
 	int		i;
 	char	*s;
 
-	i = 0;
-	while (tab[i])
+	i = -1;
+	while (tab[++i])
 	{
+		if (ft_strchr(bin_name, '/'))
+			return(bin_name);
 		s = ft_strjoin3(tab[i], "/", bin_name);
+		if (!s)
+			return (NULL);
 		if (access(s, X_OK) == 0)
+		{
+			ft_putstr_fd("s = ", 2);
+			ft_putendl_fd(s, 2);
 			return (s);
-		i++;
+		}	
 		free(s);
 	}
-	return (NULL);
+	return (bin_name);
 }
 
 void	exec_commands(char **env, char **tab, char *argv)
@@ -98,6 +113,10 @@ void	exec_commands(char **env, char **tab, char *argv)
 	if (!(avtab))
 		perror("ft_split");
 	s = find_binaries(tab, *avtab);
+	if (!s)
+		exit(EXIT_FAILURE);
+	// ft_putstr_fd("c'est le S : ", 2);
+	// ft_putendl_fd(s, 2);
 	execve(s, avtab, env);
 	perror("execve");
 	free(s);
@@ -112,9 +131,9 @@ int	exec(char **env, char **argv, int argc, char **tab)
 	int		nb_commands;
 
 	nb_commands = argc - 3;
-	i = 0;
+	i = -1;
 	fd_in = dup(STDIN_FILENO);
-	while (i < nb_commands)
+	while (++i < nb_commands)
 	{
 		pipe(pipefd);
 		if (!(fork()))
@@ -147,7 +166,6 @@ int	exec(char **env, char **argv, int argc, char **tab)
 		dup2(pipefd[0], fd_in);
 		close(pipefd[0]);
 		close(pipefd[1]);
-		i++;
 	}
 	close(fd_in);
 	i = -1;
@@ -163,10 +181,12 @@ int	main(int argc, char *argv[], char **env)
 
 	i = 0;
 	if (argc < 5)
-		exit((ft_putstr_fd("arg < 5", 1), 0));
+		exit((ft_putstr_fd("Need 5 argv at least", 1), 0));
 	tab = extract_path(env);
+	// print_tab(tab);
 	if (!(tab))
 		return (0);
 	exec(env, argv, argc, tab);
+	ft_freetab(tab); 
 	return (0);
 }
