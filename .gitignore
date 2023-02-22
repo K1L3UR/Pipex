@@ -1,0 +1,4 @@
+pipex
+*.d
+*.o
+test_ls

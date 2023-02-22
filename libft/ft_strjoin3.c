@@ -23,6 +23,8 @@ char	*ft_strjoin3(const char *s1, const char *s2, const char *s3)
 	n2 = ft_strlen(s2);
 	n3 = ft_strlen(s3);
 	s = malloc(n1 + n2 + n3 + 1);
+	if (!s)
+		return (NULL);
 	ft_memcpy(s, s1, n1);
 	ft_memcpy(s + n1, s2, n2);
 	ft_memcpy(s + n1 + n2, s3, n3);
