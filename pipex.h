@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnduran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 19:12:04 by arnduran          #+#    #+#             */
-/*   Updated: 2022/09/13 18:02:22 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/02/23 01:06:47 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,19 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include "libft/libft.h"
 # include <fcntl.h>
+# include <stdio.h>
+# include <errno.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <sys/wait.h>
+# include "libft/libft.h"
 
-# endif
+char	**extract_path(char **env);
+char	*find_binaries(char **tab, char *bin_name);
+void	print_tab(char **tab);
+void	ft_freetab(char **tab);
+void	child_management(char **argv, int *tab_norme, char **env, char **tab);
+void	exec_commands(char **env, char **tab, char *argv);
+
+#endif

@@ -1,8 +1,8 @@
 NAME = pipex
-CFLAGS := -Wall -Wextra -Werror -MMD -MP
+CFLAGS := -Wall -Wextra -Werror -MMD -MP -g
 LDFLAGS := -L libft -lft
 CC = clang
-SRC = pipex.c
+SRC = pipex.c utils.c exec.c
 DEP = $(SRC:.c=.d)
 OBJ = $(SRC:.c=.o)
 

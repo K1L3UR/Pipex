@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/18 22:33:53 by arnduran          #+#    #+#             */
-/*   Updated: 2023/02/23 02:18:05 by arnduran         ###   ########.fr       */
+/*   Created: 2023/02/22 22:14:55 by arnduran          #+#    #+#             */
+/*   Updated: 2023/02/23 01:48:49 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pipex.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_freetab(char **tab)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
+	while (tab[i])
+	{
+		free(tab[i]);
+		tab[i] = NULL;
 		i++;
-	return (i);
+	}
+	if (tab)
+		free(tab);
+	tab = NULL;
+}
+
+void	print_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		printf("%s\n", tab[i]);
+		i++;
+	}
 }

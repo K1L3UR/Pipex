@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnduran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 22:33:31 by arnduran          #+#    #+#             */
-/*   Updated: 2020/01/18 22:34:46 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/02/23 02:10:34 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strchr(const char *s, int c)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (NULL); 
 	while (s[i] != c && s[i])
 		i++;
 	if (s[i] == c)
