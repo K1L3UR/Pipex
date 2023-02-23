@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 22:26:38 by arnduran          #+#    #+#             */
-/*   Updated: 2023/02/23 02:09:35 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/02/23 20:19:40 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	**extract_path(char **env)
 		return (ft_split("", '{'));
 	while (env[i] && ft_strncmp("PATH=", env[i], 5))
 		i++;
+	if (env[i] == NULL)
+		return (ft_split("", 127));
 	return (ft_split(env[i] + 5, ':' ));
 }
 
@@ -58,11 +60,11 @@ int	open_file(char **argv)
 	return (fd_in);
 }
 
-void	child_management(char **argv, int *tab_norme, char **env, char **tab)
+int	child_management(char **argv, int *tab_norme, char **env, char **tab)
 {
-	int	pipefd[2];
+	int	pfd[2];
 
-	pipe(pipefd);
+	pipe(pfd);
 	if (!fork())
 	{
 		if (tab_norme[2] == 0)
@@ -70,19 +72,19 @@ void	child_management(char **argv, int *tab_norme, char **env, char **tab)
 		if (tab_norme[2] != 0)
 			dup2(tab_norme[0], STDIN_FILENO);
 		if ((tab_norme[2] + 1) != tab_norme[1])
-			dup2(pipefd[1], STDOUT_FILENO);
+			dup2(pfd[1], STDOUT_FILENO);
 		else
 		{
 			tab_norme[0] = open(argv[tab_norme[1] + 2], O_CREAT | O_WRONLY
 					|O_TRUNC, 0644);
+			if (tab_norme[0] == -1)
+				ft_exit(tab);
 			dup2(tab_norme[0], STDOUT_FILENO);
 		}
-		close(pipefd[0]);
-		close(pipefd[1]);
+		close(pfd[0]);
+		close(pfd[1]);
 		close(tab_norme[0]);
 		exec_commands(env, tab, argv[tab_norme[2] + 2]);
 	}
-	dup2(pipefd[0], tab_norme[0]);
-	close(pipefd[0]);
-	close(pipefd[1]);
+	return ((dup2(pfd[0], tab_norme[0]), close(pfd[1]), close(pfd[0])));
 }

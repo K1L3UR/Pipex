@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 22:33:31 by arnduran          #+#    #+#             */
-/*   Updated: 2023/02/23 02:10:34 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/02/23 20:17:20 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strchr(const char *s, int c)
 
 	i = 0;
 	if (!s)
-		return (NULL); 
+		return (NULL);
 	while (s[i] != c && s[i])
 		i++;
 	if (s[i] == c)

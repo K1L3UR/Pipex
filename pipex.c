@@ -6,18 +6,22 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 22:14:55 by arnduran          #+#    #+#             */
-/*   Updated: 2023/02/23 01:52:20 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/02/23 20:20:31 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+//tab[0] = fd_in[0];
+//tab[1] = nb_commands;
+//tab[2] = i; (nombre d'occurence pour la boucle)
 
 void	exec_commands(char **env, char **tab, char *argv)
 {
 	char	**avtab;
 	char	*s;
 
-	avtab = ft_split(argv, ' ');
+	avtab = ft_split(argv, 127);
 	if (!(avtab))
 		exit((perror("ft_split"), ft_freetab(tab), 0));
 	s = find_binaries(tab, *avtab);
@@ -31,9 +35,6 @@ void	exec_commands(char **env, char **tab, char *argv)
 	exit(EXIT_FAILURE);
 }
 
-//tab[0] = fd_in[0];
-//tab[1] = nb_commands;
-//tab[2] = i; (nombre d'occurence pour la boucle)
 int	exec(char **argv, int argc, char **env, char **tab)
 {
 	int		i;

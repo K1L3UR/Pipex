@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 22:14:55 by arnduran          #+#    #+#             */
-/*   Updated: 2023/02/23 01:48:49 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/02/23 20:20:41 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,11 @@ void	print_tab(char **tab)
 		printf("%s\n", tab[i]);
 		i++;
 	}
+}
+
+int	ft_exit(char **tab)
+{
+	ft_freetab(tab);
+	perror("you can't do that");
+	exit(1);
 }
