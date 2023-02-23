@@ -1,0 +1,26 @@
+total 120
+drwxr-xr-x  6 arnduran 2018_paris  4096 Feb 23 21:47 .
+drwxrwxrwt 55 root     root       12288 Feb 23 21:48 ..
+-rw-r--r--  1 arnduran 2018_paris     0 Feb 23 21:21 code
+drwxr-xr-x  2 arnduran 2018_paris  4096 Feb 23 21:46 dossier
+-rw-r--r--  1 arnduran 2018_paris  2333 Feb 23 21:18 exec.c
+-rw-r--r--  1 arnduran 2018_paris    63 Feb 23 21:45 exec.d
+-rw-r--r--  1 arnduran 2018_paris  6072 Feb 23 21:45 exec.o
+drwxr-xr-x  8 arnduran 2018_paris  4096 Feb 23 21:18 .git
+-rw-r--r--  1 arnduran 2018_paris    21 Feb 23 21:18 .gitignore
+-rw-r--r--  1 arnduran 2018_paris     0 Feb 23 21:42 k.txt
+drwxr-xr-x  2 arnduran 2018_paris  4096 Feb 23 21:18 libft
+-rw-r--r--  1 arnduran 2018_paris  1082 Feb 23 21:46 l.txt
+-rw-r--r--  1 arnduran 2018_paris   406 Feb 23 21:18 Makefile
+-rw-r--r--  1 arnduran 2018_paris     0 Feb 23 21:48 outfile
+-rwxr-xr-x  1 arnduran 2018_paris 20624 Feb 23 21:45 pipex
+-rw-r--r--  1 arnduran 2018_paris  1986 Feb 23 21:45 pipex.c
+-rw-r--r--  1 arnduran 2018_paris    65 Feb 23 21:45 pipex.d
+-rw-r--r--  1 arnduran 2018_paris  1531 Feb 23 21:18 pipex.h
+-rw-r--r--  1 arnduran 2018_paris  5176 Feb 23 21:45 pipex.o
+-rw-r--r--  1 arnduran 2018_paris     0 Feb 23 21:18 remi.txt
+-rw-r--r--  1 arnduran 2018_paris  1277 Feb 23 21:32 utils.c
+-rw-r--r--  1 arnduran 2018_paris    65 Feb 23 21:45 utils.d
+-rw-r--r--  1 arnduran 2018_paris  3536 Feb 23 21:45 utils.o
+-rw-r--r--  1 arnduran 2018_paris  1083 Feb 23 21:46 valgrind.rpt
+drwxr-xr-x  2 arnduran 2018_paris  4096 Feb 23 21:21 .vscode

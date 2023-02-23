@@ -6,7 +6,7 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 22:26:38 by arnduran          #+#    #+#             */
-/*   Updated: 2023/02/23 20:19:40 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/02/23 22:29:43 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,12 @@ int	child_management(char **argv, int *tab_norme, char **env, char **tab)
 			tab_norme[0] = open(argv[tab_norme[1] + 2], O_CREAT | O_WRONLY
 					|O_TRUNC, 0644);
 			if (tab_norme[0] == -1)
-				ft_exit(tab);
+				return (close(pfd[0]), close(pfd[1]), ft_exit(tab), 1);
 			dup2(tab_norme[0], STDOUT_FILENO);
 		}
-		close(pfd[0]);
-		close(pfd[1]);
-		close(tab_norme[0]);
-		exec_commands(env, tab, argv[tab_norme[2] + 2]);
+		return (close(pfd[0]), close(pfd[1]), close(tab_norme[0]) \
+		, exec_commands(env, tab, argv[tab_norme[2] + 2]), 12);
 	}
-	return ((dup2(pfd[0], tab_norme[0]), close(pfd[1]), close(pfd[0])));
+	return (dup2(pfd[0], tab_norme[0]), close(tab_norme[0]), \
+		close(pfd[1]), close(pfd[0]), 0);
 }

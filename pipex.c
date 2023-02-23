@@ -6,22 +6,22 @@
 /*   By: arnduran <arnduran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 22:14:55 by arnduran          #+#    #+#             */
-/*   Updated: 2023/02/23 20:20:31 by arnduran         ###   ########.fr       */
+/*   Updated: 2023/02/23 22:26:24 by arnduran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-//tab[0] = fd_in[0];
-//tab[1] = nb_commands;
-//tab[2] = i; (nombre d'occurence pour la boucle)
+//tab_norme[0] = fd_in[0];
+//tab_norme[1] = nb_commands;
+//tab_norme[2] = i; (nombre d'occurence pour la boucle)
 
 void	exec_commands(char **env, char **tab, char *argv)
 {
 	char	**avtab;
 	char	*s;
 
-	avtab = ft_split(argv, 127);
+	avtab = ft_split(argv, ' ');
 	if (!(avtab))
 		exit((perror("ft_split"), ft_freetab(tab), 0));
 	s = find_binaries(tab, *avtab);
@@ -45,7 +45,6 @@ int	exec(char **argv, int argc, char **env, char **tab)
 	tab_norme[0] = dup(STDIN_FILENO);
 	while (++tab_norme[2] < tab_norme[1])
 		child_management(argv, tab_norme, env, tab);
-	close(tab_norme[0]);
 	i = -1;
 	while (++i < tab_norme[1])
 		wait(NULL);
